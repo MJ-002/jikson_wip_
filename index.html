@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="style.css">
+
+	<title>찍슨 클로젯 메이트</title>
+
+	<style type="text/css">
+		
+
+		/* 커서 설정 */
+		* {cursor: url(https://cur.cursors-4u.net/food/foo-1/foo35.ani), url(https://cur.cursors-4u.net/food/foo-1/foo35.png), auto !important;}
+
+		/*폰트 설정*/
+		@font-face {
+   		 font-family: 'Paperlogy-9Black';
+   		 src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-9Black.woff2') format('woff2');
+    		font-weight: 900;
+    		font-style: normal;}
+		@font-face {
+    	font-family: 'Paperlogy-6SemiBold';
+    	src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2') format('woff2');
+   		 font-weight: 600;
+   		 font-style: normal;}
+
+		html
+		{font-family: 'Paperlogy-9Black'; 
+		line-height: 1.1;
+		word-break: keep-all;}
+
+		h1 {font-size:7.8rem;}
+		h2 {font-size:4rem;}
+		h3 {font-size:3.2rem;}
+		h4 {font-size:2.3rem;}
+		h5 {font-size:2rem; line-height: 1.35;}
+		p
+		{font-family: 'Paperlogy-6SemiBold';
+		line-height: 1.5;
+		font-size:1.2rem;}
+
+		/* 여백, 기본간격 초기화 */
+		html, body, h1, h2, h3, h4, h5, p, ol, ul 
+		{margin: 0; padding: 0; box-sizing: border-box;}
+
+		/*여백 맞춤조절*/
+		header {padding-top: 70px}
+		h1 {padding: 140px 0px ;}
+		h2 {text-align: center; padding: 100px;}
+		h3 {padding-top: 150px; padding-bottom: 100px;}
+		
+
+
+
+
+		/*컨테이너*/
+		.wrap {width: 1000px; margin:auto;}
+		.wrap2 {width: 1000px; margin:auto; display: flex;}
+
+		/*배경색*/
+		.white-b {background-color: #FFFFFF}
+		.blue-b {background-color: #0800FF}
+		.green-b {background-color: #78FF42}
+		.black-b {background-color: #000000}
+		/*그라디언트*/
+		.w-g-round {background: #ffffff; background: radial-gradient(circle,rgba(255, 255, 255, 1) 23%, rgba(120, 255, 66, 1) 80%);}
+		.w-b {background: #ffffff; background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(8, 0, 255, 1) 100%);}
+		.b-w {background: #0800FF; background: linear-gradient(180deg, rgba(8, 0, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);}
+		.w-g {background: #ffffff; background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(120, 255, 66, 1) 100%);}
+		.g-w {background: #78FF42; background: linear-gradient(180deg, rgba(120, 255, 66, 1) 0%, rgba(255, 255, 255, 1) 100%);}
+
+		/*글씨색*/
+		.white-t {color: #FFFFFF}
+		.blue-t {color: #0800FF}
+		.green-t {color: #78FF42}
+
+		/*글씨 정렬*/
+		.left-spacing {text-align: left;}
+		.right-spacing {text-align: right;}
+		.center-spacing {text-align: center;}
+		.right {display: flex; justify-content: flex-end;}
+
+		/*글씨 꾸밈(span)*/
+
+
+		/*흘러가는 글씨 애니메이션*/
+		.scroll-section {
+			height: 100px;
+		  	overflow: hidden;
+		  	position: relative;
+		  	display: flex;
+		  	align-items: center;
+			}
+		.scroll-section.blue {background-color: #0800FF;}
+		.scroll-section.black {background-color: #000000;}
+		.marquee-container {
+		  	height: 90px;
+		  	display: flex;
+		  	width: 200%;
+		  	animation: marquee 10s linear infinite;
+			}
+		.marquee-content {
+		  	display: flex;
+		  	flex: 1 0 50%;
+		  	white-space: nowrap;
+			}
+		.marquee-content h4 {
+			font-size: 2.5rem;
+			line-height: 1;
+			font-weight: bold;
+			color: white;
+			padding-right: 4rem;
+			margin: 0;
+			display: flex;
+			align-items: center;
+			}
+		@keyframes marquee {
+			0% {transform: translateX(0%);}
+			100% {transform: translateX(-50%);}
+			}
+
+		/* 전체 스크롤 부드럽게 */
+		html {scroll-behavior: smooth;}
+
+		/* 네비게이션 바 */
+		.navbar {
+		  position: fixed;
+		  top: 0;
+		  left: 0;
+		  width: 100%;
+		  height: 70px;
+		  display: flex;
+		  justify-content: space-between;
+		  align-items: center;
+		  padding: 0 60px; /* 충분한 여백 */
+		  background-color: rgba(255, 255, 255, 0.25); /* 반투명 밝은 배경 */
+		  backdrop-filter: blur(12px);
+		  -webkit-backdrop-filter: blur(12px);
+		  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+		  z-index: 999;
+		  box-sizing: border-box; /* ← 이것도 중요! 패딩 포함한 전체 width로 계산 */
+		  overflow: visible; /* 혹시라도 오버플로우 잘리는 거 방지 */
+			}
+		/* 로고 (왼쪽) */
+		.nav-left .logo {
+		  font-family: 'Paperlogy-6SemiBold';
+		  font-size: 1.2rem;
+		  line-height: 1.5;
+		  color: #0800FF;
+		  text-decoration: none;
+		  transition: color 0.3s ease;}
+		.nav-left .logo:hover {color: #78FF42;}
+		/* 오른쪽 메뉴 리스트 */
+		.nav-right {
+		  list-style: none;
+		  display: flex;
+		  gap: 30px;
+		  margin: 0;
+		  padding: 0;}
+		/* 메뉴 항목 (a 태그) */
+		.nav-right li a {
+		  font-family: 'Paperlogy-6SemiBold';
+		  font-size: 1.2rem;
+		  line-height: 1.5;
+		  color: #0800FF;
+		  text-decoration: none;
+		  transition: color 0.3s ease;}
+		.nav-right li a:hover {color: #78FF42;}
+
+		/* 말풍선 */
+		.chatbox {background-color: #78FF42; border-radius: 50px; width: 380px; padding: 30px;}
+
+		/*가격 박스*/
+		.price {background-color: #FFFFFF; border-radius: 50px; width: 500px; padding: 30px;}
+
+		/*리뷰 박스*/
+		.review {background-color: #78FF42; border-radius: 50px; width: 580px; padding: 40px;}
+
+		/* 카드 */
+		.flip-card {
+		   width: 350px;
+		   height: 270px;
+		   perspective: 1000px;
+		   overflow: visible;}
+		 .flip-inner {
+		   position: relative;
+		   width: 100%;
+		   height: 100%;
+		   text-align: center;
+		   transition: transform 0.8s;
+		   transform-style: preserve-3d;
+		   border-radius: 30px;}
+		 .flip-card:hover > .flip-inner {
+		   transform: rotateY(180deg);}
+		 .flip-front,
+		 .flip-back {
+		   position: absolute;
+		   width: 100%;
+		   height: 100%;
+		   backface-visibility: hidden;
+		   border-radius: 30px;
+		   display: flex;
+		   justify-content: center;
+		   align-items: center;
+		   flex-direction: column;
+		   padding: 20px;
+		   box-sizing: border-box;}
+		 .flip-front {
+		   background-color: #78FF42;
+		   color: black;}
+		 .flip-back {
+		   background-color: #0800FF;
+		   color: white;
+		   transform: rotateY(180deg);}
+
+
+		   /* 카드 컨테이너 */
+		.card-c{ display: flex; justify-content: center; gap: 40px;}  
+
+
+		/* 서비스 설명 */
+		.line {width: 20px;}
+		.nemo {width: 350px;}
+
+
+		
+
+	</style>
+
+</head>
+<body>
+	<!-- 네비게이션 바 -->
+	<nav class="navbar">
+	  <div class="nav-left">
+	    <a href="#header" class="logo">JIKSON</a>
+	  </div>
+	  <ul class="nav-right">
+	    <li><a href="#intro">사업 소개</a></li>
+	    <li><a href="#features">주요 특징</a></li>
+	    <li><a href="#pricing">이용 요금</a></li>
+	    <li><a href="#reviews">이용 후기</a></li>
+	  </ul>
+	</nav>
+
+	<!--제목, 헤더--> 
+	<header class="w-g-round" id="header">
+	<div class="wrap">
+		<h1 class="blue-t">
+			찍슨<br>
+			클로젯<br>
+			메이트
+		</h1>
+	</div>
+	</header>
+
+	<!--흐르는 글씨 박스--> 
+	<section class="scroll-section blue">
+	   <div class="marquee-container">
+	     <div class="marquee-content">
+	       <h4>🏡 찍슨 클로젯 메이트 – 당신의 옷장을 정리하는 가장 작은 전문가들. 🐭✨</h4>
+	       <h4>🏡 찍슨 클로젯 메이트 – 당신의 옷장을 정리하는 가장 작은 전문가들. 🐭✨</h4>
+	     </div>
+	     <div class="marquee-content">
+	       <h4>🏡 찍슨 클로젯 메이트 – 당신의 옷장을 정리하는 가장 작은 전문가들. 🐭✨</h4>
+	       <h4>🏡 찍슨 클로젯 메이트 – 당신의 옷장을 정리하는 가장 작은 전문가들. 🐭✨</h4>
+	     </div>
+	      <div class="marquee-content">
+	       <h4>🏡 찍슨 클로젯 메이트 – 당신의 옷장을 정리하는 가장 작은 전문가들. 🐭✨</h4>
+	       <h4>🏡 찍슨 클로젯 메이트 – 당신의 옷장을 정리하는 가장 작은 전문가들. 🐭✨</h4>
+	     </div>	    
+	   </div>
+	 </section>
+
+
+
+	<!--서비스 도입--> 
+	<section>
+	<div class="wrap" id="intro">
+		<div style="padding-top: 300px; padding-bottom: 200px;">
+		<div class="chatbox">
+		<h5 style="padding: 30px 30px;">
+			집에 들어오자마자<br>
+			옷을 아무 데나 던져두고<br>
+			싶으신가요?
+		</h5>
+		</div>
+		</div>
+
+		<div style="padding-bottom:300px; display: flex; justify-content: flex-end;">
+		<div class="chatbox">
+		<h5 style="padding: 30px 30px;">
+			계절이 바뀔 때마다<br>
+			옷장 정리가<br>
+			스트레스라고요?
+		</h5>
+		</div>
+		</div>
+
+		<h2 style="padding-top: 100px; padding-bottom: 150px;">
+			그런 당신을 위해 탄생한
+			<br>찍슨 클로젯 메이트!
+		</h2>
+	</div>
+	</section>
+
+
+	<!--서비스 개요-->
+	<div style="height: 150px" class="w-b"></div>
+	<section class="blue-b" style="position: relative;">
+	<div class="wrap" >
+
+		<h3 class="white-t">
+			보이지 않는 손,<br>
+			아니… 쥐가 정리해드립니다!
+		</h3>
+
+		<p class="white-t" style="display: flex; width: 370px; padding-bottom: 150px;">
+			찍슨은 여러분의 집 안에서 ‘보이지 않는 정리 전문가’처럼 움직이며 옷과 소지품을 깔끔하게 정리해주는 신개념 방문 정리 서비스입니다.
+			<br><br>
+			어느덧 동물 언어 통역 기술을 통해 소동물과 원활하게 소통하고 교류할 수 있는 시대가 되었습니다. 그렇다면 이제는 작은 파트너들의 도움을 받을 때입니다.
+			<br><br>
+			집에 작은 쥐구멍 하나만 마련해 주세요.
+			철저한 교육을 받은 생쥐 직원, ‘찍슨 메이트’들이 집 안에 상주하며 눈 깜짝할 새에 여러분의 옷을 말끔하게 정리해 드립니다.
+		</p>
+
+		
+	</section>
+
+
+	<!--비대면 커뮤니케이션-->
+	<section>
+	<div class="wrap" id="features">
+		<h3>집 안에서 직원을 마주칠<br>
+		걱정 없어요.</h3>
+
+		
+		<div class="nemo" style="padding-left: 600px">
+		<h5 >
+		비대면 커뮤니케이션
+		</h5>
+
+		<p>
+			<br>
+			스마트폰 앱을 통해 정리 진행 상황을 확인하거나 찍슨에게 요청 사항을 간편하게 전달할 수 있습니다.
+			<br><br>
+			누군가가 우리 집에 들어왔다는 느낌이 들지도 않게,
+			정리 과정 중 고객과의 마주침을 최소화하여
+			프라이버시를 보장합니다.
+		</p>
+		</div>
+
+		<!-- 이전 요소(class="nemo")와 100px 간격 -->
+		<div style="height: 100px;"></div>
+
+		<!-- 카드 전체 컨테이너 -->
+		<div class="card-c">
+		  
+		  <!-- 카드 1 -->
+		  <div class="flip-card">
+		    <div class="flip-inner">
+		      	<div class="flip-front">
+		       		<h4>자동 감지 모드</h4>
+		     	</div>
+
+		     	<div class="flip-back">
+		       		<h5>자동 감지 모드</h5>
+		        	<p><br>누군가가 집 안에 있을 때<br>이를 자동으로 감지하고<br>쥐구멍 밖으로 나가지 않습니다.</p>
+		     	</div>
+		    </div>
+		  </div>
+
+		  <!-- 카드 2 -->
+		  <div class="flip-card">
+		    <div class="flip-inner">
+		      	<div class="flip-front">
+		        	<h4>수동 설정 모드</h4>
+		      	</div>
+
+		      	<div class="flip-back">
+		        	<h5>수동 설정 모드</h5>
+		        	<p><br>특정 시간대를 직접 설정하여<br>원하는 시간에만<br>옷을 정리하게 할 수 있습니다.</p>
+		      	</div>
+		    </div>
+		  </div>
+
+		  <!-- 카드 3 -->
+		  <div class="flip-card">
+		    <div class="flip-inner">
+		      	<div class="flip-front">
+		        	<h4>긴급 정리 요청</h4>
+		      	</div>
+
+		      	<div class="flip-back">
+		        	<h5>긴급 정리 요청</h5>
+		        	<p><br>집에 예기치 못한 손님이 올 때<br>집안을 빠르게 정리해줄 것을<br>요청할 수 있습니다.</p>
+		      	</div>
+		    </div>
+		  </div>
+
+		</div>
+
+		<div style="height: 100px;"></div>
+
+	</div>
+	</section>
+
+	<!--찍슨 스팟 시스템-->
+	<div style="height: 150px" class="w-g"></div>
+	<section class="green-b">
+	<div class="wrap">
+		<h3 style="text-align: right;">
+			정리할 옷은 정해진 구역에!
+		</h3>
+
+		<div style="height: 100px;"></div> <!--여백-->
+
+		<div class="nemo">
+			<h5>
+				찍슨 스팟 시스템
+			</h5>
+
+			<p>	<br>
+				‘찍슨 스팟’은 찍슨 메이트와의 약속 장소입니다. 외출 후, 찍슨 스팟으로 설정해둔 특정 위치에 옷을 벗어두면 일정 시간 후 찍슨 메이트가 정리해 드립니다.
+				<br><br>
+				앱을 통해 정리 시간을 세부적으로 조절할 수 있으며,지정된 위치에 놓인 옷만 정리하므로 사적인 물건에는 절대 손대지 않습니다.
+			</p>
+		</div>
+
+		<!--양말 옮기는 그림/좌우로 애니메이션-->
+
+		<img src="">
+
+	<div style="height: 100px;"></div> <!--여백-->
+	</div>
+	</section>
+
+
+	<!--맞춤 정리 스타일-->
+	<section>
+	<div style="height: 150px" class="g-w"></div>
+	<div class="wrap">	
+		<h3>
+			찍슨이 알아서, 내 입맛대로.
+		</h3>
+
+		<div class="nemo">
+			<h5>
+				맞춤 정리 스타일 제공
+			</h5>
+
+			<p>
+				찍슨은 최첨단 기술을 도입해 여러분의 생활 패턴과 취향을 분석하고 그에 따른 최적의 정리 방식을 구현합니다.
+			</p>
+		</div>
+
+			<div style="height: 100px;"></div> <!--여백-->
+
+		<!--ul 사용하기, 배경은 어태치먼트-->
+		<div class="nemo" style="padding-left: 600px">
+				<h4>
+					계절별 자동 정리 시스템
+				</h4>
+					<div style="height: 160px;"></div> <!--여백-->
+				<h4>
+					날씨 및 기온 변화 감지
+				</h4>
+					<div style="height: 160px;"></div> <!--여백-->
+				<h4>
+					수납 공간 활용 극대화
+				</h4>
+					<div style="height: 160px;"></div> <!--여백-->
+				<h4>	
+					색상별, 활용도별 정리
+				</h4>
+		</div>
+
+		<div style="height: 100px;"></div> <!--여백-->
+
+	</div>
+	</section>	
+
+
+	<!--철저한 위생/배경에 투명한 손씻는 그림-->
+	<section class="blue-b">
+	<div style="height: 150px" class="w-b"></div>
+	<div class="wrap">
+		<h3 style="text-align: center;">
+			위생 걱정은 NO NO!
+		</h3>
+
+		<div class="nemo" style="width:420px;">
+			<h5>
+				철저한 청결 관리와 직원 교육
+			</h5>
+
+			<p>
+				<br>
+				찍슨 메이트는 철저한 위생 교육을 받은 후 배치됩니다.
+				항상 깨끗한 작업복을 착용하는 것은 물론, 언제나 정해진 규칙대로만 정리 작업을 진행합니다.
+				<br><br>
+				정리 전후에 손 세척과 소독은 필수죠.<br>
+				또한 고객의 사적 물품(식료품, 금고, 귀중품)에는 절대 손대지 않습니다!
+			</p>
+		</div>
+
+
+		<div style="height: 100px;"></div> <!--여백-->
+
+	</div>
+	</section>	
+
+
+	<!--인테리어-->
+	<div style="height: 150px" class="b-g"></div>
+	<section>
+	<div class="wrap">
+		<h3>
+			인테리어까지 챙기는 최고의 센스.
+		</h3>
+
+		<div class="nemo" style="padding-left: 600px">
+			<h5>
+				쥐구멍 디자인 서비스
+			</h5>
+
+			<p>
+				찍슨은 인테리어에 어울리는 다양한 쥐구멍 스타일을 제공합니다. 원하는 것으로 골라보세요!
+			</p>
+		</div>
+
+<div style="height: 100px;"></div> <!--여백-->
+
+
+
+
+		<!--문 디자인-->
+		<h5>클래식 아치형</h5>
+		<p>
+			우드 베이스의 귀엽고<br>
+			아기자기한 디자인입니다.<br>
+			따뜻한 느낌의 인테리어에<br>
+			어울립니다.
+		</p>
+
+		</p>
+
+		<h5>모던 미니문</h5>
+		<p>
+			깔끔한 모노톤의<br>
+			모던한 디자인입니다.<br>
+			심플한 인테리어에<br>
+			어울립니다.
+		</p>
+
+		<h5>숨겨진 미로형</h5>
+		<p>
+			겉으로는 보이지 않는<br>
+			숨겨진 미로 같은 출입구입니다.<br>
+			어린아이나 반려동물이 있는<br>
+			집에 적합합니다.
+		</p>
+
+<div style="height: 100px;"></div> <!--여백-->
+
+	</div>
+	</section>	
+
+
+	<!--가격-->
+	<section class="green-b" id="pricing">
+	<div class="wrap">	
+		<h2>
+			이 모든 서비스를<br>
+			놀라울 정도로 합리적인 가격에!
+		</h2>
+
+		<div class="price">
+			<h3>기본 구독료</h3>
+			<img src=""><!--치즈-->
+			<h3>X3</h3>
+			<p>
+				한 달에 40g짜리 치즈<br>
+				3조각이면 충분합니다.
+			</p>
+		</div>
+		
+		<div class="price">
+			<h3>추가 서비스</h3>
+			<img src=""><!--치즈-->
+			<h3>X1</h3>
+			<p>
+				추가 서비스 1건당 추가 치즈<br>
+				1조각이 필요합니다.
+			</p>		
+		</div>
+
+
+	</div>
+	</section>	
+
+
+	<!--리뷰-->
+	<section>
+	<div class="wrap" id="reviews">
+		<h3>
+			이미 수만 건의 리뷰로<br>
+			입증된 편리함.
+		</h3>
+
+<div style="height: 80px;"></div> <!--여백-->
+
+		<div class="review">
+		<h4>
+			"집에 들어오면 항상 옷이 깔끔하게<br>
+			정리돼 있어서 신기해요!"
+		</h4>
+
+		<p>	<br>
+			처음엔 집안 어딘가에 직원이 있다는 게 부담스러웠지만, 몇 달 사용해 보니 마법처럼 느껴져요! 퇴근하고 집에 오면 벗어둔 코트가 깔끔하게 정리돼 있는 걸 볼 때마다 감탄합니다.
+			<br>
+			옷이 어디 갔는지 헤맬 필요 없이, 제 스타일에 맞게 정리된 공간에서 바로 꺼내 입을 수 있어서 너무 편리해요.
+			<br>
+			– ★★★★★
+		</p>
+		</div>
+
+<div style="height: 150px;"></div> <!--여백-->
+
+		<div class="right">
+				<div class="review">
+				<h4>
+					"옷장 정리할 때마다 스트레스였는데,<br>
+					이제는 걱정이 없어요."
+				</h4>
+
+				<p>	<br>
+					계절이 바뀌면 알아서 옷 정리가 되어 있어요. 따뜻해지면 두꺼운 외투가 정리되고, 필요할 때 다시 손 닿는 곳에 놓여 있으니까 너무 편리해요!
+					<br>
+					특히 겨울에서 봄으로 넘어갈 때 두꺼운 패딩과 니트가 깔끔하게 사라지고, 가벼운 옷들이 보기 좋게 정리되는 게 감동적이에요. 덕분에 계절 변화가 기다려질 정도입니다.
+					<br>
+					– ★★★★★
+				</p>
+				</div>
+		</div>
+
+<div style="height: 150px;"></div> <!--여백-->
+
+		<div class="review">
+		<h4>
+			"솔직히 반신반의했는데,<br>
+			이젠 찍슨 없으면 못 살 것 같아요."
+		</h4>
+
+		<p>	<br>
+			이용료를 치즈로 낸다는 점도 재미있고, 쥐구멍 디자인이 다양하고귀여워서 인테리어 포인트까지 챙길 수 있어요. 찍슨 없으면 이제 정리를 못 할 것 같아요!
+			<br>
+			그리고 정리뿐만 아니라, 찍슨 직원들이 내 취향을 점점 더 알아가면서 정리 방식이 최적화되는 것도 신기합니다.
+			<br>
+			– ★★★★☆
+		</p>
+		</div>
+
+<div style="height: 150px;"></div> <!--여백-->
+
+	</div>
+	</section>	
+
+
+	<!--마무리-->
+	<section class="blue-b">
+	<div style="height: 800px; display: flex; justify-content: center; align-items: center;">
+	<div class="wrap">
+		<h2 class="white-t">
+			지금, 찍슨과 함께<br>
+			편리함을 시작하세요!
+		</h2>
+	</div>
+	</section>	
+
+
+<!--흐르는 글씨 박스2--> 
+	<section class="scroll-section black">
+	   <div class="marquee-container">
+	     <div class="marquee-content">
+	       <h4>🏡 찍슨 클로젯 메이트 – 당신의 옷장을 정리하는 가장 작은 전문가들. 🐭✨</h4>
+	       <h4>🏡 찍슨 클로젯 메이트 – 당신의 옷장을 정리하는 가장 작은 전문가들. 🐭✨</h4>
+	     </div>
+	     <div class="marquee-content">
+	       <h4>🏡 찍슨 클로젯 메이트 – 당신의 옷장을 정리하는 가장 작은 전문가들. 🐭✨</h4>
+	       <h4>🏡 찍슨 클로젯 메이트 – 당신의 옷장을 정리하는 가장 작은 전문가들. 🐭✨</h4>
+	     </div>
+	      <div class="marquee-content">
+	       <h4>🏡 찍슨 클로젯 메이트 – 당신의 옷장을 정리하는 가장 작은 전문가들. 🐭✨</h4>
+	       <h4>🏡 찍슨 클로젯 메이트 – 당신의 옷장을 정리하는 가장 작은 전문가들. 🐭✨</h4>
+	     </div>
+	   </div>
+	 </section>
+
+
+<!--푸터--> 
+	<footer class="green-b">
+	<div class="wrap">
+		<div style="padding-top: 60px; padding-bottom: 60px; display: flex; space-between; align-items: stretch;">
+		
+			<div style="flex: 1;">
+			찍슨 클로젯 메이트<br>
+			Jikson’s Closet Mate Service
+			<br><br>
+			&copy; 2025 김민주 All rights reserved.
+			</div>
+
+			<div style="flex: 1; text-align: right;">
+			CONTACT<br>
+			schoolbus8282@gmail.com
+			<br>
+			CLASS<br>
+			Web publishing_midterm
+			</div>
+
+		</div>
+	</div>
+	</footer>
+
+</body>
+</html>
